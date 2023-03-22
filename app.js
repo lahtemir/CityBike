@@ -15,8 +15,8 @@ mongoose.connect("mongodb://localhost:27017/Trips20")
 
 //Creating new schema
 const dataSchema = {
-  departureTime: String,
-  returnTime: String,
+  departure: String,
+  return: String,
   departureStationId: String,
   departureStationName: String,
   returnStationId: String,
@@ -30,17 +30,13 @@ const Datarow = mongoose.model("Datarow", dataSchema);
 
 app.get("/", function(req, res) {
 
-
-
-// Datarow.find()
-// .then(function (datarows) {
-//   res.render("home", {
-//     allData:datarows
-//   })
-// })
-// .catch(function (err) {
-// console.log(err);
-// });
+Datarow.find()
+.then(function (datarows) {
+console.log(datarows);
+  })
+.catch(function (err) {
+console.log(err);
+});
 
 
 });
