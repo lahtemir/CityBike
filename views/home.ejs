@@ -1,0 +1,31 @@
+<%- include("header"); -%>
+
+<h1>HOME</h1>
+
+<table>
+  <tr>
+    <th>Departure time</th>
+    <th>Return time</th>
+    <th>Departure station id</th>
+    <th>Departure station name</th>
+    <th>Return station id</th>
+    <th>Return station name</th>
+    <th>Distance</th>
+    <th>Duration</th>
+  </tr>
+  <% allData.forEach(function(data) { %>
+    <tr>
+      <td> <% data.departureTime %></td>
+      <td> <% data.returnTime %></td>
+      <td> <% data.departureStationId %></td>
+      <td> <% data.departureStationName %></td>
+      <td> <% data.returnStationId %></td>
+      <td> <% data.returnStationName %></td>
+      <td> <% data.distance %></td>
+      <td> <% data.duration %></td>
+    </tr>
+<%  }); %>
+
+</table>
+
+<%- include("footer") -%>

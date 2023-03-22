@@ -1,0 +1,53 @@
+
+body {
+  margin: 0;
+}
+
+h1{
+  text-align: center;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+
+}
+li{
+  display: inline-block;
+  margin-right: 40px;
+  padding: 20px 0;
+}
+li:hover{
+  cursor: pointer;
+  font-weight: bold;
+}
+nav{
+  background-color: red;
+  text-align: right;
+  width: 100%;
+}
+
+th {
+  font-size: 15px;
+  padding: 5px 20px;
+  border: 1px solid #ddd;
+}
+
+
+table {
+   border-collapse: collapse;
+   margin: auto;
+
+}
+
+
+footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 5px;
+  background-color: red;
+  color: white;
+  text-align: center;
+}
