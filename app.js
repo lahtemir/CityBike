@@ -6,7 +6,7 @@ const app = express();
 app.set("view engine", "ejs");
 app.use(express.static("public"));
 
-
+const homeTitle= "Bike Trips"
 
 
 // Connectiong to mongoose db
@@ -15,14 +15,14 @@ mongoose.connect("mongodb://localhost:27017/Trips20")
 
 //Creating new schema
 const dataSchema = {
-  departure: String,
-  return: String,
-  departureStationId: String,
-  departureStationName: String,
-  returnStationId: String,
-  returnStationName: String,
-  distance: Number,
-  duration: Number
+  Departure: String,
+  Return: String,
+  DepartureStationId: String,
+  DepartureStationName: String,
+  ReturnStationId: String,
+  ReturnStationName: String,
+  Distance: Number,
+  Duration: Number
 };
 
 //Creating model
@@ -32,8 +32,12 @@ app.get("/", function(req, res) {
 
 Datarow.find()
 .then(function (datarows) {
-console.log(datarows);
-  })
+
+  res.render("home", {
+    homeText:homeTitle,
+    allData:datarows
+  });
+})
 .catch(function (err) {
 console.log(err);
 });

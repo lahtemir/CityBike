@@ -1,6 +1,6 @@
 <%- include("header"); -%>
 
-<h1>HOME</h1>
+<h1><%=homeText %></h1>
 
 <table>
   <tr>
@@ -13,19 +13,21 @@
     <th>Distance</th>
     <th>Duration</th>
   </tr>
+
   <% allData.forEach(function(data) { %>
-    <tr>
-      <td> <% data.departureTime %></td>
-      <td> <% data.returnTime %></td>
-      <td> <% data.departureStationId %></td>
-      <td> <% data.departureStationName %></td>
-      <td> <% data.returnStationId %></td>
-      <td> <% data.returnStationName %></td>
-      <td> <% data.distance %></td>
-      <td> <% data.duration %></td>
+     <tr>
+      <td class=dateTime> <%= data.Departure.replace("T", " ") %></td>
+      <td class=dateTime> <%= data.Return.replace("T", " ") %></td>
+      <td> <%= data.DepartureStationId %></td>
+      <td> <%= data.DepartureStationName %></td>
+      <td> <%= data.ReturnStationId %></td>
+      <td> <%= data.ReturnStationName %></td>
+      <td> <%= data.Distance +"m" %></td>
+      <td> <%= data.Duration +"s" %></td>
     </tr>
 <%  }); %>
-
 </table>
+
+
 
 <%- include("footer") -%>
