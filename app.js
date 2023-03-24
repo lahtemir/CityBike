@@ -1,9 +1,11 @@
 const express = require("express");
 const mongoose =require("mongoose");
+const bodyParser = require("body-parser");
 
 const app = express();
 
 app.set("view engine", "ejs");
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 const homeTitle= "Bike Trips"
@@ -49,9 +51,9 @@ Datarow.find()
 .catch(function (err) {
 console.log(err);
 });
-
 });
 
+//Finding all stations and rendering to Stations page
 app.get("/stations", function(req, res) {
   Station.find()
   .then(function (stations) {
@@ -63,6 +65,26 @@ app.get("/stations", function(req, res) {
   console.log(err);
 });
 });
+
+
+// Creating dynamic page for stations
+app.get("/stations/:Name", function(req, res) {
+  let requestedStation = req.params.Name;
+
+// Finding spesific stations info
+  Station.findOne({Name: requestedStation})
+  .then(function (station) {
+    res.render("station", {
+      stationName: station.Name,
+      stationAddress: station.Address
+    });
+  })
+  .catch(function (err) {
+  console.log(err);
+});
+});
+
+
 
 
 
