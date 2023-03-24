@@ -13,7 +13,7 @@ const homeTitle= "Bike Trips"
 mongoose.set('strictQuery', false);
 mongoose.connect("mongodb://localhost:27017/Trips20")
 
-//Creating new schema
+//Creating new schemas
 const dataSchema = {
   Departure: String,
   Return: String,
@@ -25,14 +25,22 @@ const dataSchema = {
   Duration: Number
 };
 
-//Creating model
+const stationSchema = {
+  Id: String,
+  Name: String,
+  Osoite: String,
+  Kaupunki: String
+}
+
+//Creating models
 const Datarow = mongoose.model("Datarow", dataSchema);
+const Station = mongoose.model("Station", stationSchema);
 
 app.get("/", function(req, res) {
 
+//Finding all data and rendering to home page
 Datarow.find()
 .then(function (datarows) {
-
   res.render("home", {
     homeText:homeTitle,
     allData:datarows
@@ -42,8 +50,23 @@ Datarow.find()
 console.log(err);
 });
 
-
 });
+
+app.get("/stations", function(req, res) {
+  Station.find()
+  .then(function (stations) {
+    res.render("stations", {
+      allStations:stations
+    });
+  })
+  .catch(function (err) {
+  console.log(err);
+});
+});
+
+
+
+
 
 app.listen(3000, function() {
   console.log("Server started on port 3000");

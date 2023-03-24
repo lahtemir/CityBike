@@ -16,15 +16,21 @@ li{
   display: inline-block;
   margin-right: 40px;
   padding: 20px 0;
+
 }
 li:hover{
   cursor: pointer;
   font-weight: bold;
 }
+li a {
+    text-decoration: none;
+    color: black;
+}
 nav{
   background-color: red;
   text-align: right;
   width: 100%;
+
 }
 
 th {
@@ -35,17 +41,15 @@ th {
 
 td{
   border: 1px solid #ddd;
-  text-align: center;
-  padding: 2px 0;
+
+  padding: 2px 2px 2px 10px;
 }
-.dateTime{
-  padding: 2px 6px
-}
+
 
 table {
    border-collapse: collapse;
    margin: auto;
-
+   margin-bottom: 100px;
 }
 
 

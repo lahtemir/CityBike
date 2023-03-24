@@ -4,11 +4,11 @@
 
 <table>
   <tr>
-    <th>Departure time</th>
+    <!-- <th>Departure time</th>
     <th>Return time</th>
-    <th>Departure station id</th>
+    <th>Departure station id</th> -->
     <th>Departure station name</th>
-    <th>Return station id</th>
+    <!-- <th>Return station id</th> -->
     <th>Return station name</th>
     <th>Distance</th>
     <th>Duration</th>
@@ -16,11 +16,11 @@
 
   <% allData.forEach(function(data) { %>
      <tr>
-      <td class=dateTime> <%= data.Departure.replace("T", " ") %></td>
+      <!-- <td class=dateTime> <%= data.Departure.replace("T", " ") %></td>
       <td class=dateTime> <%= data.Return.replace("T", " ") %></td>
-      <td> <%= data.DepartureStationId %></td>
+      <td> <%= data.DepartureStationId %></td> -->
       <td> <%= data.DepartureStationName %></td>
-      <td> <%= data.ReturnStationId %></td>
+      <!-- <td> <%= data.ReturnStationId %></td> -->
       <td> <%= data.ReturnStationName %></td>
       <td> <%= data.Distance +"m" %></td>
       <td> <%= data.Duration +"s" %></td>

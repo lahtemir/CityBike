@@ -1,0 +1,30 @@
+<%- include("header"); -%>
+
+
+<h1>Stations</h1>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Station Name</th>
+    <th>Address</th>
+    <th>City</th>
+  </tr>
+
+  <% allStations.forEach(function(station) {%>
+    <% if (station.Kaupunki == "Espoo") { %>
+    <%   Kaupunki = "Espoo" %>
+    <% } else { %>
+    <%   Kaupunki = "Helsinki" %>
+    <% } %>
+    <tr>
+      <td> <%= station.Id %> </td>
+      <td> <%= station.Name %> </td>
+      <td> <%= station.Osoite %> </td>
+      <td> <%= Kaupunki %></td>
+
+    </tr>
+<%  }) %>
+</table>
+
+<%- include("footer") -%>
