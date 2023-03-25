@@ -60,28 +60,18 @@ console.log(err);
 });
 
 
-// Finding all stations and rendering to Stations page
-app.get("/stations", function(req, res) {
+
+app.get("/stations", paginatedResults(Station), (req, res) => {
   Station.find()
   .then(function (stations) {
     res.render("stations", {
-      allStations:stations
+      allStations:res.paginatedResults
     });
   })
   .catch(function (err) {
   console.log(err);
 });
 });
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -105,10 +95,10 @@ app.get("/stations/:Name", function(req, res) {
 });
 
 
-app.get("/users", paginatedResults(Station), (req, res ) => {
+// app.get("/users", paginatedResults(Station), (req, res ) => {
 
-  res.json(res.paginatedResults) 
-})
+//   res.json(res.paginatedResults) 
+// })
 
 
 
@@ -136,6 +126,11 @@ function paginatedResults(model) {
         page: page - 1,
         limit: limit
       }
+    }
+
+    results.info = {
+      page: page,
+      limit: limit
     }
   
     try{

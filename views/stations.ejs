@@ -11,20 +11,20 @@
     <th>City</th>
   </tr>
 
-  <% allStations.forEach(function(station) {%>
-    <% if (station.Kaupunki == "Espoo") { %>
-    <%   Kaupunki = "Espoo" %>
-    <% } else { %>
-    <%   Kaupunki = "Helsinki" %>
-    <% } %>
+  <% for (let i = 0; i < allStations.info.limit; i++) { %>
+    <% if (allStations.results[i].Kaupunki == "Espoo") { %>
+      <%   Kaupunki = "Espoo" %>
+      <% } else { %>
+      <%   Kaupunki = "Helsinki" %>
+      <% } %>
     <tr>
-      <td>  <%= station.Id %> </td>
-      <td> <a href="/stations/<%=station.Name%>"> <%= station.Name %></a> </td>
-      <td> <%= station.Osoite %> </td>
-      <td> <%= Kaupunki %></td>
-
+      <td><%= allStations.results[i].Id; %> </td>
+      <td><%= allStations.results[i].Name; %></td>
+      <td><%= allStations.results[i].Osoite; %></td>
+      <td><%= Kaupunki; %></td>
     </tr>
-<%  }) %>
+  <% } %>
+
 </table>
 
 <%- include("footer") -%>
