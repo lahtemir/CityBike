@@ -14,11 +14,8 @@ const homeTitle= "Bike Trips"
 
 // Connectiong to mongoose db
 mongoose.set('strictQuery', false);
-mongoose.connect("mongodb://localhost:27017/Trips20")
-const db = mongoose.connection
-db.once("open", async() => {
-  if (await Station.countDocuments().exec() > 0) return
-})
+mongoose.connect("mongodb://localhost:27017/helsinkiCityBikesDB")
+
 
 //Creating new schemas
 const dataSchema = {
@@ -44,14 +41,14 @@ const Datarow = mongoose.model("Datarow", dataSchema);
 const Station = mongoose.model("Station", stationSchema);
 
 
-app.get("/", function(req, res) {
+app.get("/trips", paginatedResults(Datarow), (req, res) => {
 
 //Finding all data and rendering to home page
 Datarow.find()
 .then(function (datarows) {
   res.render("home", {
     homeText:homeTitle,
-    allData:datarows
+    allData:res.paginatedResults
   });
 })
 .catch(function (err) {
@@ -95,10 +92,10 @@ app.get("/stations/:Name", function(req, res) {
 });
 
 
-// app.get("/users", paginatedResults(Station), (req, res ) => {
+app.get("/users", paginatedResults(Station), (req, res ) => {
 
-//   res.json(res.paginatedResults) 
-// })
+  res.json(res.paginatedResults) 
+})
 
 
 
@@ -130,7 +127,9 @@ function paginatedResults(model) {
 
     results.info = {
       page: page,
-      limit: limit
+      limit: limit, 
+      startIndex: startIndex,
+      endIndex: endIndex
     }
   
     try{
