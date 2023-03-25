@@ -40,6 +40,9 @@ const stationSchema = {
 const Datarow = mongoose.model("Datarow", dataSchema);
 const Station = mongoose.model("Station", stationSchema);
 
+app.get("/", function(req, res) {
+  res.redirect("/trips?page=1&limit=25")
+})
 
 app.get("/trips", paginatedResults(Datarow), (req, res) => {
 
@@ -54,6 +57,8 @@ Datarow.find()
 .catch(function (err) {
 console.log(err);
 });
+
+
 });
 
 
@@ -132,6 +137,9 @@ function paginatedResults(model) {
       endIndex: endIndex
     }
   
+    
+  
+
     try{
       results.results = await model.find().limit(limit).skip(startIndex).exec()
       res.paginatedResults = results

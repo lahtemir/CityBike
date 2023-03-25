@@ -18,8 +18,8 @@
       <%   Kaupunki = "Helsinki" %>
       <% } %>
     <tr>
-      <td><%= allStations.results[i].Id; %> </td>
-      <td><%= allStations.results[i].Name; %></td>
+      <td ><%= allStations.results[i].Id; %> </td>
+      <td> <a href="/stations/<%=allStations.results[i].Name%>"> <%= allStations.results[i].Name %></a> </td>
       <td><%= allStations.results[i].Osoite; %></td>
       <td><%= Kaupunki; %></td>
     </tr>
@@ -35,9 +35,20 @@
 </select>
 
 
+<% if ("previous" in allStations) { %>
+  <a href="/trips/?page=<%= allStations.info.page -1 %>&limit=<%= allStations.info.limit %>"> < </a>
+    <% } %>
 
 
 
 
+<% if ("next" in allStations) { %>
+  <a href="/trips/?page=<%= allStations.info.page +1 %>&limit=<%= allStations.info.limit %>"> > </a>
+    <% } %>
+
+
+    <br>
+    <br>
+    <br>
 
 <%- include("footer") -%>
