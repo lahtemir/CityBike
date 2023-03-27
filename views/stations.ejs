@@ -3,7 +3,10 @@
 
 <h1>Stations</h1>
 
-<table>
+<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+
+
+<table id="myTable">
   <tr>
     <th>ID</th>
     <th>Station Name</th>
@@ -16,7 +19,7 @@
     <% if (allStations.results[i]) { %>
       <tr>
         <td ><%= allStations.results[i].Id; %> </td>
-        <td> <a href="/stations/<%=allStations.results[i].Name%>"> <%= allStations.results[i].Name %></a> </td>
+        <td> <a href="/stations/<%=allStations.results[i].Name%>"> <%=allStations.results[i].Name %></a> </td>
         <td><%= allStations.results[i].Osoite; %></td>
         <td><%= allStations.results[i].Kaupunki; %></td>
       </tr>
@@ -52,4 +55,30 @@
     <br>
     <br>
 
+
 <%- include("footer") -%>
+
+<script>
+  function myFunction() {
+    // Declare variables
+    var input, filter, table, tr, td, i, txtValue, a;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    table = document.getElementById("myTable");
+    tr = table.getElementsByTagName("tr");
+  
+    // Loop through all table rows, and hide those who don't match the search query
+    for (i = 0; i < tr.length; i++) {
+      td = tr[i].getElementsByTagName("td")[1];
+      if (td) {
+        txtValue = td.textContent || td.innerText || td.innerHTML;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+          tr[i].style.display = "";
+        } else {
+          tr[i].style.display = "none";
+        }
+      }
+    }
+  }
+  </script>
+
