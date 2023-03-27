@@ -86,16 +86,6 @@ app.get("/stations", paginatedResults(Station), (req, res) => {
 
 
 
-// Datarow.find()
-// .then(function (datarows) {
-//   res.render("home", {
-//     allData:datarows
-//   })
-// })
-// .catch(function (err) {
-// console.log(err);
-// });
-
 
 // Creating dynamic page for stations
 app.get("/stations/:Name", (req, res) => {

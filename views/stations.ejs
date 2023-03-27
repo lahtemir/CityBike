@@ -13,12 +13,17 @@
 
 
   <% for (let i = 0; i < allStations.info.limit; i++) { %>
+    <% if (allStations.results[i]) { %>
       <tr>
         <td ><%= allStations.results[i].Id; %> </td>
         <td> <a href="/stations/<%=allStations.results[i].Name%>"> <%= allStations.results[i].Name %></a> </td>
         <td><%= allStations.results[i].Osoite; %></td>
         <td><%= allStations.results[i].Kaupunki; %></td>
       </tr>
+    <% } else { %>
+      <tr></tr>
+    <% } %>
+      
   <% } %>
 
 </table>
