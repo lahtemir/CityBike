@@ -11,29 +11,25 @@
     <th>City</th>
   </tr>
 
+
   <% for (let i = 0; i < allStations.info.limit; i++) { %>
-    <% if (allStations.results[i].Kaupunki == "Espoo") { %>
-      <%   Kaupunki = "Espoo" %>
-      <% } else { %>
-      <%   Kaupunki = "Helsinki" %>
-      <% } %>
-    <tr>
-      <td ><%= allStations.results[i].Id; %> </td>
-      <td> <a href="/stations/<%=allStations.results[i].Name%>"> <%= allStations.results[i].Name %></a> </td>
-      <td><%= allStations.results[i].Osoite; %></td>
-      <td><%= Kaupunki; %></td>
-    </tr>
+      <tr>
+        <td ><%= allStations.results[i].Id; %> </td>
+        <td> <a href="/stations/<%=allStations.results[i].Name%>"> <%= allStations.results[i].Name %></a> </td>
+        <td><%= allStations.results[i].Osoite; %></td>
+        <td><%= allStations.results[i].Kaupunki; %></td>
+      </tr>
   <% } %>
 
 </table>
 
-<select name="limitSelection">
-  <option >25</option>
-  <option >50</option>
-  <option value="75">75</option>
-  <option value="100">100</option>
-</select>
+<div class="tableNavigation">
+<a href="/stations/?page=<%= allStations.info.page%>&limit=<%= 25 %>">25</a>
+<a href="/stations/?page=<%= allStations.info.page%>&limit=<%= 50 %>">50</a>
+<a href="/stations/?page=<%= allStations.info.page%>&limit=<%= 75 %>">75</a>
+<a href="/stations/?page=<%= allStations.info.page%>&limit=<%= 100 %>">100</a>
 
+<br>
 
 <% if ("previous" in allStations) { %>
   <a href="/stations/?page=<%= allStations.info.page -1 %>&limit=<%= allStations.info.limit %>"> < </a>
@@ -45,7 +41,7 @@
 <% if ("next" in allStations) { %>
   <a href="/stations/?page=<%= allStations.info.page +1 %>&limit=<%= allStations.info.limit %>"> > </a>
     <% } %>
-
+  </div>
 
     <br>
     <br>

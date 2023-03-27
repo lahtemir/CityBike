@@ -9,7 +9,7 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-const homeTitle= "Bike Trips"
+const homeTitle= "Bike Journeys"
 
 
 // Connectiong to mongoose db
@@ -34,11 +34,20 @@ const stationSchema = {
   Name: String,
   Osoite: String,
   Kaupunki: String
-}
+};
+
+const stationsDataSchema = {
+  StationName: String,
+  StationAddress: String,
+  City: String,
+  Departure: Array,
+  Return: Array
+};
 
 //Creating models
 const Datarow = mongoose.model("Datarow", dataSchema);
 const Station = mongoose.model("Station", stationSchema);
+const StationDetails = mongoose.model("StationDetails", stationsDataSchema);
 
 app.get("/", function(req, res) {
   res.redirect("/trips?page=1&limit=25")
@@ -77,24 +86,38 @@ app.get("/stations", paginatedResults(Station), (req, res) => {
 
 
 
+// Datarow.find()
+// .then(function (datarows) {
+//   res.render("home", {
+//     allData:datarows
+//   })
+// })
+// .catch(function (err) {
+// console.log(err);
+// });
 
 
 // Creating dynamic page for stations
-app.get("/stations/:Name", function(req, res) {
+app.get("/stations/:Name", (req, res) => {
   let requestedStation = req.params.Name;
 
 // Finding spesific stations info
-  Station.findOne({Name: requestedStation})
-  .then(function (station) {
-    res.render("station", {
-      stationName: station.Name,
-      stationAddress: station.Address
-    });
-  })
-  .catch(function (err) {
-  console.log(err);
+
+StationDetails.findOne({StationName:requestedStation})
+.then(StationDetails => {
+  res.render("station", {
+    stationName:StationDetails.StationName,
+    stationAddress:StationDetails.StationAddress,
+    departures:StationDetails.Departure,
+    returns: StationDetails.Return
+  });
 });
 });
+
+
+
+
+
 
 
 app.get("/users", paginatedResults(Station), (req, res ) => {
