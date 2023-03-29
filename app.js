@@ -105,8 +105,19 @@ StationDetails.findOne({StationName:requestedStation})
 });
 
 
+app.post("/searchStation/:requestedStation", function(req, res) {
+  let requestedStation = req.body.requestedStation;
 
-
+  StationDetails.findOne({StationName:requestedStation})
+  .then(StationDetails => {
+    res.render("station", {
+      stationName:StationDetails.StationName,
+      stationAddress:StationDetails.StationAddress,
+      departures:StationDetails.Departure,
+      returns: StationDetails.Return
+    });
+  });
+})
 
 
 

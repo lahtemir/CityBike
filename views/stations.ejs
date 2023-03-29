@@ -3,10 +3,16 @@
 
 <h1>Stations</h1>
 
-<input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+<div class="stationSearch">
+<form action="/searchStation/:requestedStation" method="post">
+  <input type="text" name="requestedStation" >
+  <button type="submit" name="search">Search</button>
+</form>
+</div>
 
 
-<table id="myTable">
+
+<table id="stationsTable">
   <tr>
     <th>ID</th>
     <th>Station Name</th>
@@ -36,6 +42,8 @@
 <a href="/stations/?page=<%= allStations.info.page%>&limit=<%= 50 %>">50</a>
 <a href="/stations/?page=<%= allStations.info.page%>&limit=<%= 75 %>">75</a>
 <a href="/stations/?page=<%= allStations.info.page%>&limit=<%= 100 %>">100</a>
+<a href="/stations/?page=<%= allStations.info.page%>&limit=<%= 1000 %>">all</a>
+
 
 <br>
 
@@ -59,19 +67,31 @@
 <%- include("footer") -%>
 
 <script>
+  function clickMe() {
+    var text = document.getElementById("myInput");
+    text.classList.toggle("hide");
+    text.classList.toggle("show");
+  }
+
+
+  
   function myFunction() {
     // Declare variables
     var input, filter, table, tr, td, i, txtValue, a;
     input = document.getElementById("myInput");
     filter = input.value.toUpperCase();
-    table = document.getElementById("myTable");
+    table = document.getElementById("stationsTable");
     tr = table.getElementsByTagName("tr");
+
+    // for (let i = 0; i < allStations.results.length; i++)
+    //   if()
+
   
     // Loop through all table rows, and hide those who don't match the search query
     for (i = 0; i < tr.length; i++) {
       td = tr[i].getElementsByTagName("td")[1];
       if (td) {
-        txtValue = td.textContent || td.innerText || td.innerHTML;
+        txtValue = td.textContent || td.innerText ;
         if (txtValue.toUpperCase().indexOf(filter) > -1) {
           tr[i].style.display = "";
         } else {
@@ -79,6 +99,7 @@
         }
       }
     }
+
   }
   </script>
 
