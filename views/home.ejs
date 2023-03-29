@@ -2,6 +2,20 @@
 
 <h1><%=homeText %></h1>
 
+<div class="journeySearch">
+<button type="button" class="searchJourney">Search Journeys</button>
+<div class="content">
+  <form action="">
+    <Label class="searchLabel">Departure Station</Label>
+    <input type="text" name="departureStation">
+    <br>
+    <Label class="searchLabel">Return Station</Label>
+    <input type="text" name="returnStation">
+
+  </form>
+</div>
+</div>
+
 <table>
   <tr>
     <th>Departure station name</th>
@@ -48,3 +62,23 @@
     <br>
     <br>
 <%- include("footer") -%>
+
+
+<script>
+
+var coll = document.getElementsByClassName("searchJourney");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+
+</script>

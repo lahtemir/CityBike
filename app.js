@@ -73,6 +73,7 @@ console.log(err);
 
 
 app.get("/stations", paginatedResults(Station), (req, res) => {
+
   Station.find()
   .then(function (stations) {
     res.render("stations", {
@@ -119,6 +120,9 @@ app.post("/searchStation/:requestedStation", function(req, res) {
   });
 })
 
+app.get("/map", (req, res) => {
+  res.render("map")
+})
 
 
 app.get("/users", paginatedResults(Station), (req, res ) => {
