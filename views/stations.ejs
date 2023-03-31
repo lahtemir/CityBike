@@ -38,24 +38,27 @@
 </table>
 
 <div class="tableNavigation">
-<a href="/stations/?page=<%= allStations.info.page%>&limit=<%= 25 %>">25</a>
-<a href="/stations/?page=<%= allStations.info.page%>&limit=<%= 50 %>">50</a>
-<a href="/stations/?page=<%= allStations.info.page%>&limit=<%= 75 %>">75</a>
-<a href="/stations/?page=<%= allStations.info.page%>&limit=<%= 100 %>">100</a>
-<a href="/stations/?page=<%= allStations.info.page%>&limit=<%= 1000 %>">all</a>
-
+  <div class="limitDropdown">
+    <span><%= allStations.info.limit %> ▼</span>
+    <div class="limitDropdownContent">
+      <a href="/stations/?page=<%= allStations.info.page%>&limit=<%= 25 %>">25</a>
+      <a href="/stations/?page=<%= allStations.info.page%>&limit=<%= 50 %>">50</a>
+      <a href="/stations/?page=<%= allStations.info.page%>&limit=<%= 75 %>">75</a>
+      <a href="/stations/?page=<%= allStations.info.page%>&limit=<%= 100 %>">100</a>
+    </div>
+  </div>
 
 <br>
 
 <% if ("previous" in allStations) { %>
-  <a href="/stations/?page=<%= allStations.info.page -1 %>&limit=<%= allStations.info.limit %>"> < </a>
+  <a href="/stations/?page=<%= allStations.info.page -1 %>&limit=<%= allStations.info.limit %>"> ◄ </a>
     <% } %>
 
 
 
 
 <% if ("next" in allStations) { %>
-  <a href="/stations/?page=<%= allStations.info.page +1 %>&limit=<%= allStations.info.limit %>"> > </a>
+  <a href="/stations/?page=<%= allStations.info.page +1 %>&limit=<%= allStations.info.limit %>"> ► </a>
     <% } %>
   </div>
 
