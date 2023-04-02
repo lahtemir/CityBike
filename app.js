@@ -18,7 +18,7 @@ mongoose.connect("mongodb://localhost:27017/helsinkiCityBikesDB")
 
 
 //Creating new schemas
-const dataSchema = {
+const allDataSchema = {
   Departure: String,
   Return: String,
   DepartureStationId: String,
@@ -45,7 +45,7 @@ const stationsDataSchema = {
 };
 
 //Creating models
-const Datarow = mongoose.model("Datarow", dataSchema);
+const Alldatarow = mongoose.model("Alldatarow", allDataSchema);
 const Station = mongoose.model("Station", stationSchema);
 const StationDetails = mongoose.model("StationDetails", stationsDataSchema);
 
@@ -53,10 +53,10 @@ app.get("/", function(req, res) {
   res.redirect("/trips?page=1&limit=25")
 })
 
-app.get("/trips", paginatedResults(Datarow), (req, res) => {
+app.get("/trips", paginatedResults(Alldatarow), (req, res) => {
 
 //Finding all data and rendering to home page
-Datarow.find()
+Alldatarow.find().limit(100)
 .then(function (datarows) {
   res.render("home", {
     homeText:homeTitle,
@@ -164,8 +164,6 @@ function paginatedResults(model) {
       startIndex: startIndex,
       endIndex: endIndex
     }
-  
-    
   
 
     try{

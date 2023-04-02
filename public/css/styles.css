@@ -73,6 +73,7 @@ a {
   border-radius: 5px;
   padding: 2px 3px;
   margin-bottom: 12px;
+  cursor: pointer;
 }
 
 .limitDropdownContent {
@@ -115,6 +116,7 @@ a {
 
 .active, .collapsible:hover {
   background-color: #ccc;
+  cursor: pointer;
 }
 
 .content {
@@ -133,10 +135,13 @@ a {
   margin-bottom: 20px;
 }
 
-#map {
-  height: 100pc;
+.stationName {
+  color: black;
 }
 
+.stationName:hover{
+  color: red;
+}
 
 
 footer{
