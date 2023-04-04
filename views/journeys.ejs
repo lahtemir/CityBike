@@ -1,6 +1,6 @@
 <%- include("header"); -%>
 
-<h1><%=homeText %></h1>
+<h1><%=journeysText %></h1>
 
 <div class="journeySearch">
 <button type="button" class="searchJourney">Search Journeys</button>
@@ -43,21 +43,21 @@
   <div class="limitDropdown">
     <span><%= allData.info.limit %> ▼</span>
     <div class="limitDropdownContent">
-      <a href="/trips/?page=<%= allData.info.page%>&limit=<%= 25 %>">25</a>
-      <a href="/trips/?page=<%= allData.info.page%>&limit=<%= 50 %>">50</a>
-      <a href="/trips/?page=<%= allData.info.page%>&limit=<%= 75 %>">75</a>
-      <a href="/trips/?page=<%= allData.info.page%>&limit=<%= 100 %>">100</a>
+      <a href="/journeys/?page=<%= allData.info.page%>&limit=<%= 25 %>">25</a>
+      <a href="/journeys/?page=<%= allData.info.page%>&limit=<%= 50 %>">50</a>
+      <a href="/journeys/?page=<%= allData.info.page%>&limit=<%= 75 %>">75</a>
+      <a href="/journeys/?page=<%= allData.info.page%>&limit=<%= 100 %>">100</a>
   </div>
   </div>
   <br>
 
 <% if ("previous" in allData) { %>
-  <a href="/trips/?page=<%= allData.info.page -1 %>&limit=<%= allData.info.limit %>"> ◄ </a>
+  <a href="/journeys/?page=<%= allData.info.page -1 %>&limit=<%= allData.info.limit %>"> ◄ </a>
     <% } %>
 
 
 <% if ("next" in allData) { %>
-  <a href="/trips/?page=<%= allData.info.page +1 %>&limit=<%= allData.info.limit %>"> ► </a>
+  <a href="/journeys/?page=<%= allData.info.page +1 %>&limit=<%= allData.info.limit %>"> ► </a>
     <% } %>
 
     </div>

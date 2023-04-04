@@ -9,7 +9,7 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
-const homeTitle= "Bike Journeys"
+const journeysTitle= "Bike Journeys"
 
 
 // Connectiong to mongoose db
@@ -50,16 +50,16 @@ const Station = mongoose.model("Station", stationSchema);
 const StationDetails = mongoose.model("StationDetails", stationsDataSchema);
 
 app.get("/", function(req, res) {
-  res.redirect("/trips?page=1&limit=25")
+  res.redirect("/journeys?page=1&limit=25")
 })
 
-app.get("/trips", paginatedResults(Alldatarow), (req, res) => {
+app.get("/journeys", paginatedResults(Alldatarow), (req, res) => {
 
 //Finding all data and rendering to home page
 Alldatarow.find().limit(100)
 .then(function (datarows) {
-  res.render("home", {
-    homeText:homeTitle,
+  res.render("journeys", {
+    journeysText:journeysTitle,
     allData:res.paginatedResults
   });
 })
@@ -73,6 +73,7 @@ console.log(err);
 
 
 app.get("/stations", paginatedResults(Station), (req, res) => {
+
 
   Station.find()
   .then(function (stations) {
@@ -109,16 +110,21 @@ StationDetails.findOne({StationName:requestedStation})
 app.post("/searchStation/:requestedStation", function(req, res) {
   let requestedStation = req.body.requestedStation;
 
-  StationDetails.findOne({StationName:requestedStation})
-  .then(StationDetails => {
-    res.render("station", {
-      stationName:StationDetails.StationName,
-      stationAddress:StationDetails.StationAddress,
-      departures:StationDetails.Departure,
-      returns: StationDetails.Return
+ 
+    StationDetails.findOne({StationName:requestedStation})
+    .then(StationDetails => {
+      res.render("station", {
+        stationName:StationDetails.StationName,
+        stationAddress:StationDetails.StationAddress,
+        departures:StationDetails.Departure,
+        returns: StationDetails.Return
+      });
     });
-  });
+
 })
+
+
+
 
 app.get("/map", (req, res) => {
   res.render("map")
