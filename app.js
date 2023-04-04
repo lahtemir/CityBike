@@ -72,11 +72,13 @@ app.post("/searchJourneys/:searchedStation", (req, res) => {
   let requestedSearch =req.body.searchedStation;
   let requestedDistanceMin= parseFloat(req.body.distanceMin)*1000;
   let requestedDistanceMax= parseFloat(req.body.distanceMax)*1000;
-
+  let requestedDurationMin= parseFloat(req.body.durationMin)*60;
+  let requestedDurationMax= parseFloat(req.body.durationMax)*60;
 
   Alldatarow.find({$and: [
     {$or: [{DepartureStationName:requestedSearch}, {ReturnStationName:requestedSearch}]}, 
-    {$and: [ { Distance:{$gt:(requestedDistanceMin)} }, { Distance:{$lt:(requestedDistanceMax)} } ] }
+    {$and: [ { Distance:{$gte:(requestedDistanceMin)} }, { Distance:{$lte:(requestedDistanceMax)} } ] },
+    {$and: [ { Duration:{$gte:(requestedDurationMin)} }, { Duration:{$lte:(requestedDurationMax)} } ] }
     ]})
   .then(searchedData => {
     res.render("searchJourney", {
