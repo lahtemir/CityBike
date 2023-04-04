@@ -5,13 +5,12 @@
 <div class="journeySearch">
 <button type="button" class="searchJourney">Search Journeys</button>
 <div class="content">
-  <form action="">
-    <Label class="searchLabel">Departure Station</Label>
-    <input type="text" name="departureStation">
-    <br>
-    <Label class="searchLabel">Return Station</Label>
-    <input type="text" name="returnStation">
+  <form action="/searchJourneys/:searchedStation" method="post">
+    <Label class="searchLabel">Search Journey by Station Name</Label>
+    <input type="text" name="searchedStation">
 
+    <br>
+    <button type="submit" name="search">Search</button>
   </form>
 </div>
 </div>

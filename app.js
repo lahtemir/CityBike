@@ -66,15 +66,27 @@ Alldatarow.find().limit(100)
 .catch(function (err) {
 console.log(err);
 });
+});
 
+app.post("/searchJourneys/:searchedStation", (req, res) => {
+  let requestedSearch =req.body.searchedStation;
 
+  Alldatarow.find({$or: [{DepartureStationName:requestedSearch}, {ReturnStationName:requestedSearch}] })
+  .then(searchedData => {
+    res.render("searchJourney", {
+      searchedJourney:requestedSearch,
+      searchedData:searchedData
+   
+    });
+  })
+  .catch(function (err) {
+    console.log(err);
+    });
 });
 
 
 
 app.get("/stations", paginatedResults(Station), (req, res) => {
-
-
   Station.find()
   .then(function (stations) {
     res.render("stations", {
@@ -131,7 +143,7 @@ app.get("/map", (req, res) => {
 })
 
 
-app.get("/users", paginatedResults(Station), (req, res ) => {
+app.get("/users", paginatedResults(Alldatarow), (req, res ) => {
 
   res.json(res.paginatedResults) 
 })
