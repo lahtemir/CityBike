@@ -70,10 +70,29 @@ console.log(err);
 
 app.post("/searchJourneys/:searchedStation", (req, res) => {
   let requestedSearch =req.body.searchedStation;
-  let requestedDistanceMin= parseFloat(req.body.distanceMin)*1000;
+  let requestedDistanceMin;
+  let requestedDurationMin;
+
+  // Setting min distance to 0 if no input 
+  if (!req.body.distanceMin) {
+    requestedDistanceMin = parseFloat(0);
+  } else {
+    requestedDistanceMin= parseFloat(req.body.distanceMin)*1000;
+  }
+
   let requestedDistanceMax= parseFloat(req.body.distanceMax)*1000;
-  let requestedDurationMin= parseFloat(req.body.durationMin)*60;
+
+  // Setting min duration to 0 if no input 
+  if (!req.body.durationMin) {
+    requestedDurationMin = parseFloat(0);
+  } else {
+    requestedDurationMin= parseFloat(req.body.durationMin)*60;
+  }
+
   let requestedDurationMax= parseFloat(req.body.durationMax)*60;
+
+  
+  
 
   Alldatarow.find({$and: [
     {$or: [{DepartureStationName:requestedSearch}, {ReturnStationName:requestedSearch}]}, 
