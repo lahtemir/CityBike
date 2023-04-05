@@ -71,7 +71,9 @@ console.log(err);
 app.post("/searchJourneys/:searchedStation", (req, res) => {
   let requestedSearch =req.body.searchedStation;
   let requestedDistanceMin;
+  let requestedDistanceMax;
   let requestedDurationMin;
+  let requestedDurationMax;
 
   // Setting min distance to 0 if no input 
   if (!req.body.distanceMin) {
@@ -80,7 +82,14 @@ app.post("/searchJourneys/:searchedStation", (req, res) => {
     requestedDistanceMin= parseFloat(req.body.distanceMin)*1000;
   }
 
-  let requestedDistanceMax= parseFloat(req.body.distanceMax)*1000;
+  // Setting max distance to infinity if no input 
+  if (!req.body.distanceMax) {
+    requestedDistanceMax = parseFloat(Infinity);
+  } else {
+    requestedDistanceMax= parseFloat(req.body.distanceMax)*1000;
+  }
+
+  
 
   // Setting min duration to 0 if no input 
   if (!req.body.durationMin) {
@@ -89,7 +98,14 @@ app.post("/searchJourneys/:searchedStation", (req, res) => {
     requestedDurationMin= parseFloat(req.body.durationMin)*60;
   }
 
-  let requestedDurationMax= parseFloat(req.body.durationMax)*60;
+  // Setting max duration to infinity if no input 
+  if (!req.body.distanceMax) {
+    requestedDurationMax = parseFloat(Infinity);
+  } else {
+    requestedDurationMax= parseFloat(req.body.durationMax)*60;
+  }
+
+
 
   
   
