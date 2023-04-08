@@ -174,6 +174,10 @@ app.post("/searchStation/:requestedStation", function(req, res) {
         departures:StationDetails.Departure,
         returns: StationDetails.Return
       });
+    })
+    .catch(function (err) {
+      res.redirect("/stations?page=1&limit=25")
+      console.log(err);
     });
 
 })
