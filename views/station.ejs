@@ -11,43 +11,101 @@
 
     <p> Total number of journeys ending at the station: <%= returns.length %></p>
 
+
+    <!-- ************************************** -->
+    <!-- **** Station as Departure station **** -->
+    <!-- ************************************** -->
+
     <% if (departures.length > 0) { %>
         <br>
         <h3> <%= stationName %> as Departure Station</h3>
+        <!-- Calculationg the average distance  -->
         <% let departureSum = 0 %>
         <% for (let i = 0; i < departures.length; i++) { %>
             <% departureSum = departureSum + departures[i].Distance %>
         <% } %>
         <p>The average distance of a journey starting from the station: <%= Math.round(departureSum / departures.length) %> m</p>
         
-
+        <!-- Pushing all return stations to array -->
         <% let returnStations= [] %>
         <% for (let i = 0; i < departures.length; i++) { %>
             <% returnStations.push(departures[i].ReturnStationName +" ") %>
         <% } %>
-        <p>Return stations for journeys starting from this station <%= returnStations %> </p>
+
+        <!-- Counting the most frequent station from array -->
+        <% const countReturn = {}; %>
+
+        <% returnStations.forEach(element => { %>
+        <% if (countReturn[element]) { %>
+            <%    countReturn[element] += 1; %>
+        <% } else { %>
+            <%    countReturn[element] = 1; %>
+        <% } %>
+        <% }); %>
+
+         <!-- Get top value from array -->
+        <% let topReturnStation = Object.keys(countReturn).reduce((a, b) => countReturn[a] > countReturn[b] ? a : b); %>
+        
+        <p>The most common return station for journeys starting from this station <%= topReturnStation %> </p>
     <% } %>
+
+
+    <!-- *********************************** -->
+    <!-- **** Station as Return station **** -->    
+    <!-- *********************************** -->
 
 
     <% if (returns.length > 0) { %>
         <br>
         <h3> <%= stationName %> as Return Station</h3>
+         <!-- Calculationg the average distance  -->
         <% let returnSum = 0 %>
         <% for (let i = 0; i < returns.length; i++) { %>
             <% returnSum = returnSum + returns[i].Distance %>
         <% } %>
+        
         <p>The average distance of a journey ending at the station: <%= Math.round(returnSum / returns.length) %> m</p>
 
-
+        <!-- Pushing all departurestations to array -->
         <% let departureStations= [] %>
         <% for (let i = 0; i < returns.length; i++) { %>
             <% departureStations.push(returns[i].DepartureStationName +" ") %>
         <% } %>
-        <p>Departure stations for journeys ending at this station <%= departureStations %> </p>
+
+
+        <!-- Counting the most frequent station from array -->
+        <% const countDeparture = {}; %>
+
+        <% departureStations.forEach(element => { %>
+        <% if (countDeparture[element]) { %>
+            <%    countDeparture[element] += 1; %>
+        <% } else { %>
+            <%    countDeparture[element] = 1; %>
+        <% } %>
+        <% }); %>
+
+         <!-- Get top value from array -->
+        <% let topDepartureStation = Object.keys(countDeparture).reduce((a, b) => countDeparture[a] > countDeparture[b] ? a : b); %>
+
+
+        <p> The most common departure station for journeys ending at this station is: <%= topDepartureStation %> </p>
         <% } %>
 
  
 </div>
 
 <%- include("footer") -%>
+
+<script>
+const mostFrequent = arr =>
+  Object.entries(
+    arr.reduce((a, v) => {
+      a[v] = a[v] ? a[v] + 1 : 1;
+      return a;
+    }, {})
+  ).reduce((a, v) => (v[1] >= a[1] ? v : a), [null, 0])[0];
+
+
+
+</script>
 
