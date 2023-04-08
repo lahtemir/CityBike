@@ -105,11 +105,7 @@ app.post("/searchJourneys/:searchedStation", (req, res) => {
     requestedDurationMax= parseFloat(req.body.durationMax)*60;
   }
 
-
-
-  
-  
-
+// Finding journey data from db
   Alldatarow.find({$and: [
     {$or: [{DepartureStationName:requestedSearch}, {ReturnStationName:requestedSearch}]}, 
     {$and: [ { Distance:{$gte:(requestedDistanceMin)} }, { Distance:{$lte:(requestedDistanceMax)} } ] },

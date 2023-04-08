@@ -2,31 +2,35 @@
 
 <h1>Journeys including <%= searchedJourney %></h1>
 
-<table>
-    <tr>
-      <th>Departure station name</th>
-      <th>Return station name</th>
-      <th>Distance</th>
-      <th>Duration</th>
-    </tr>
 
-    <% for (let i = 0; i < 500; i++) { %>
-      <% if (searchedData[i]) { %>
+
+    <% if (!searchedData[0]) { %>
+      <h2>No Data found with given search criteria</h2>
+      <a href="/journeys?page=1&limit=25">Back to Journeys</a>
+      
+    <% } else { %>
+      <table>
         <tr>
-          <td><%= searchedData[i].DepartureStationName %> </td>
-          <td><%= searchedData[i].ReturnStationName %> </td>
-          <td><%= Math.round((searchedData[i].Distance /1000) * 100) / 100 +" km"; %> </td>
-          <td><%= Math.round(searchedData[i].Duration /60) +" min"; %> </td>
+          <th>Departure station name</th>
+          <th>Return station name</th>
+          <th>Distance</th>
+          <th>Duration</th>
         </tr>
-      <% } else { %>
-        <tr></tr>
+      <tr>
+      <% for (let i = 0; i < 500; i++) { %>
+        <% if (searchedData[i]) { %>
+       
+            <td><%= searchedData[i].DepartureStationName %> </td>
+            <td><%= searchedData[i].ReturnStationName %> </td>
+            <td><%= Math.round((searchedData[i].Distance /1000) * 100) / 100 +" km"; %> </td>
+            <td><%= Math.round(searchedData[i].Duration /60) +" min"; %> </td>
+          </tr>
+        <% } %>
       <% } %>
+    </table>
 
+    <% } %>
 
-      <% } %>
-
-</table>
-
-
+  
 
 <%- include("footer") -%>
