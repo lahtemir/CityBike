@@ -101,7 +101,7 @@ app.post("/searchJourneys/:searchedStation", (req, res) => {
   }
 
   // Setting max duration to infinity if no input 
-  if (!req.body.distanceMax) {
+  if (!req.body.durationMax) {
     requestedDurationMax = parseFloat(Infinity);
   } else {
     requestedDurationMax= parseFloat(req.body.durationMax)*60;
@@ -121,6 +121,7 @@ app.post("/searchJourneys/:searchedStation", (req, res) => {
     });
   })
   .catch(function (err) {
+    res.redirect("/journeys")
     console.log(err);
     });
 });
