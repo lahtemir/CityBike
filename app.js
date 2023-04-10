@@ -40,6 +40,8 @@ const stationsDataSchema = {
   StationName: String,
   StationAddress: String,
   City: String,
+  x: String,
+  y: String,
   Departure: Array,
   Return: Array
 };
@@ -147,14 +149,18 @@ app.get("/stations/:Name", (req, res) => {
 // Finding spesific stations info
 
 StationDetails.findOne({StationName:requestedStation})
+
 .then(StationDetails => {
   res.render("station", {
     stationName:StationDetails.StationName,
     stationAddress:StationDetails.StationAddress,
     departures:StationDetails.Departure,
-    returns: StationDetails.Return
+    returns: StationDetails.Return,
+    lng: parseFloat(StationDetails.x),
+    lat: parseFloat(StationDetails.y)
   });
 });
+
 });
 
 

@@ -143,6 +143,11 @@ a {
   color: red;
 }
 
+#googleMap {
+  width: 400px;
+  height: 400px;
+}
+
 
 footer{
   position: fixed;

@@ -11,6 +11,10 @@
 
     <p> Total number of journeys ending at the station: <%= returns.length %></p>
 
+    <p id="lng"><%= lng %></p>
+    <p id="lat"><%= lat %></p>
+    
+
 
     <!-- ************************************** -->
     <!-- **** Station as Departure station **** -->
@@ -94,18 +98,29 @@
  
 </div>
 
+
+<div id="googleMap"></div>
+
+
+
 <%- include("footer") -%>
 
-<script>
-const mostFrequent = arr =>
-  Object.entries(
-    arr.reduce((a, v) => {
-      a[v] = a[v] ? a[v] + 1 : 1;
-      return a;
-    }, {})
-  ).reduce((a, v) => (v[1] >= a[1] ? v : a), [null, 0])[0];
 
 
+<script type="text/javascript">
+function myMap() {
 
+var mapProp= {
+  center:new google.maps.LatLng(document.getElementById("lat").innerHTML, document.getElementById("lng").innerHTML),
+  zoom:18,
+};
+var map = new google.maps.Map(document.getElementById("googleMap"),mapProp);
+new google.maps.Marker({
+    position: new google.maps.LatLng(document.getElementById("lat").innerHTML, document.getElementById("lng").innerHTML),
+    map
+  });
+}
 </script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=KEY&callback=myMap"></script>
 
