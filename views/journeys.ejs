@@ -6,20 +6,26 @@
 <button type="button" class="searchJourney">Search Journeys</button>
 <div class="content">
   <form action="/searchJourneys/:searchedStation" method="post">
-    <Label class="searchLabel">Search Journey by Station Name</Label>
-    <input type="text" name="searchedStation" required>
-    <br><br>
-    <Label>Distance</Label>
-    <input type="text" name="distanceMin">
-    <input type="text" name="distanceMax">
-    <br><br>
-    <Label>Duration</Label>
-    <input type="text" name="durationMin">
-    <input type="text" name="durationMax">
-
-
-    <br><br>
-    <button type="submit" name="search">Search</button>
+      <Label class="searchLabel">Search Journey by Station Name</Label>
+      <input type="text" name="searchedStation" required>
+      <br><br>
+    <div class="distance">
+      <Label>Distance: </Label>
+      <input type="text" name="distanceMin">
+      <p>km -</p>
+      <input type="text" name="distanceMax">
+      <p>km </p>
+    </div>
+      <br>
+    <div class="duration">
+      <Label>Duration: </Label>
+      <input type="text" name="durationMin">
+      <p>min -</p>
+      <input type="text" name="durationMax">
+      <p>min </p>
+    </div>
+      <br>
+      <button type="submit" name="search">Search</button>
   </form>
 </div>
 </div>

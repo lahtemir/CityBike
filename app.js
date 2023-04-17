@@ -52,7 +52,7 @@ const Station = mongoose.model("Station", stationSchema);
 const StationDetails = mongoose.model("StationDetails", stationsDataSchema);
 
 app.get("/", function(req, res) {
-  res.redirect("/journeys?page=1&limit=25")
+  res.render("home")
 })
 
 app.get("/journeys", paginatedResults(Alldatarow), (req, res) => {
@@ -90,8 +90,6 @@ app.post("/searchJourneys/:searchedStation", (req, res) => {
   } else {
     requestedDistanceMax= parseFloat(req.body.distanceMax)*1000;
   }
-
-  
 
   // Setting min duration to 0 if no input 
   if (!req.body.durationMin) {

@@ -1,10 +1,18 @@
 
 body {
   margin: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color:#fbfbfb85;
 }
 
 h1{
   text-align: center;
+}
+#logo{
+  width: 130px;
+  float: left;
+  margin: 5px 20px;
+  height: 65px;
 }
 ul {
   list-style-type: none;
@@ -27,21 +35,53 @@ li a {
     color: black;
 }
 nav{
-  background-color: red;
   text-align: right;
   width: 100%;
+  
+}
+
+.hero {
+  min-height: 700px;
+  column-count: 2;
+  margin: 80px 15px 0;
+}
+.heroText h1 {
+  font-weight: 600;
+  font-size: 3.5rem;
+  
+}
+.heroText{
+  height: 500px;
+  width: 68%;
+  margin: 15px 0 10px 17%;
+  text-align: center;
+  line-height: 115%;
+  font-size: 1.3rem;
+  padding:  10px 20px;
+}
+.heroImg{
+  height: 500px;
+  width: 90%;
+  background-image: url(https://www.citybikefinland.fi/sites/citybike/files/images/slider_home/smoovehki-127.jpg);
+  background-position: center;
+  background-size: cover;
+  background-position-x: right;
+  transform: rotate(8deg);
 }
 
 th {
   font-size: 15px;
   padding: 5px 20px;
   border: 1px solid #ddd;
+  background-color: #F6F38A;
 }
 
 td{
   border: 1px solid #ddd;
-  
-  padding: 2px 2px 2px 10px;
+  padding: 2px 10px;
+}
+tr:hover{
+  background-color: #fffcada9;
 }
 
 
@@ -63,7 +103,7 @@ a {
   color: black;
 }
 .tableNavigation a:hover{
-  color: red;
+  font-weight: bolder;
 }
 
 .limitDropdown {
@@ -101,9 +141,27 @@ a {
 .journeySearch{
   text-align: center;
   margin-bottom: 10px;
+  
 }
+.journeySearch form {
+  margin-top: 10px;
+}
+
+.distance p{
+  display: inline;
+}
+.distance input{
+  width: 50px;
+}
+.duration p{
+  display: inline;
+}
+.duration input{
+  width: 50px;
+}
+
 .searchJourney {
-  background-color: #f1eded;
+  background-color: #F6F38A;
   color: #444;
   cursor: pointer;
   padding: 18px;
@@ -112,6 +170,12 @@ a {
   text-align: center;
   outline: none;
   font-size: 15px;
+  
+}
+
+.searchJourney:hover {
+  background-color: #d9d9d9;
+
 }
 
 .active, .collapsible:hover {
@@ -133,6 +197,7 @@ a {
 .stationSearch {
   text-align: center;
   margin-bottom: 20px;
+  
 }
 
 .stationName {
@@ -140,22 +205,27 @@ a {
 }
 
 .stationName:hover{
-  color: red;
+  font-weight: bolder;
 }
 
+.stationDetails{
+  columns: 2;
+  margin: 50px;
+}
 #googleMap {
   width: 400px;
   height: 400px;
+
 }
 
 
 footer{
-  position: fixed;
+  
   left: 0;
   bottom: 0;
   width: 100%;
-  padding: 5px;
-  background-color: red;
+  padding: 5px 0;
+  background-color: #F6F38A;
   color: black;
   text-align: center;
 }
