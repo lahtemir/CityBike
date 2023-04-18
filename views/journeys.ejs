@@ -3,31 +3,31 @@
 <h1><%=journeysText %></h1>
 
 <div class="journeySearch">
-<button type="button" class="searchJourney">Search Journeys</button>
-<div class="content">
-  <form action="/searchJourneys/:searchedStation" method="post">
-      <Label class="searchLabel">Search Journey by Station Name</Label>
-      <input type="text" name="searchedStation" required>
-      <br><br>
-    <div class="distance">
-      <Label>Distance: </Label>
-      <input type="text" name="distanceMin">
-      <p>km -</p>
-      <input type="text" name="distanceMax">
-      <p>km </p>
-    </div>
-      <br>
-    <div class="duration">
-      <Label>Duration: </Label>
-      <input type="text" name="durationMin">
-      <p>min -</p>
-      <input type="text" name="durationMax">
-      <p>min </p>
-    </div>
-      <br>
-      <button type="submit" name="search">Search</button>
-  </form>
-</div>
+  <button type="button" class="search">Search Journeys</button>
+  <div class="content">
+    <form action="/searchJourneys/:searchedStation" method="post">
+        <Label class="searchLabel">Search Journey by Station Name</Label>
+        <input type="text" name="searchedStation" required>
+        <br><br>
+      <div class="distance">
+        <Label>Distance: </Label>
+        <input type="text" name="distanceMin">
+        <p>km -</p>
+        <input type="text" name="distanceMax">
+        <p>km </p>
+      </div>
+        <br>
+      <div class="duration">
+        <Label>Duration: </Label>
+        <input type="text" name="durationMin">
+        <p>min -</p>
+        <input type="text" name="durationMax">
+        <p>min </p>
+      </div>
+        <br>
+        <button type="submit" name="search" class="searchBtn">Search</button>
+    </form>
+  </div>
 </div>
 
 <table>
@@ -83,7 +83,7 @@
 
 <script>
 
-var coll = document.getElementsByClassName("searchJourney");
+var coll = document.getElementsByClassName("search");
 var i;
 
 for (i = 0; i < coll.length; i++) {

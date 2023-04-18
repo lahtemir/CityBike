@@ -28,6 +28,7 @@ li:hover{
 li a {
     text-decoration: none;
     color: black;
+    padding: 10px 0;
 }
 nav{
   text-align: right;
@@ -90,6 +91,17 @@ table a {
   background-size: cover;
   background-position-x: right;
   transform: rotate(8deg);
+}
+
+.searchBtn{
+  background-color: #F6F38A;
+  padding: 5px 10px;
+  border: 1px solid #444;
+}
+
+.searchBtn:hover{
+  cursor: pointer;
+  background-color: #fffcada9;
 }
 
 .tableNavigation{
@@ -156,7 +168,7 @@ table a {
   width: 50px;
 }
 
-.searchJourney {
+.search {
   background-color: #F6F38A;
   color: #444;
   cursor: pointer;
@@ -169,7 +181,7 @@ table a {
   
 }
 
-.searchJourney:hover {
+.search:hover {
   background-color: #d9d9d9;
 
 }

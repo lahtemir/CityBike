@@ -173,7 +173,9 @@ app.post("/searchStation/:requestedStation", function(req, res) {
         stationName:StationDetails.StationName,
         stationAddress:StationDetails.StationAddress,
         departures:StationDetails.Departure,
-        returns: StationDetails.Return
+        returns: StationDetails.Return,
+        lng: parseFloat(StationDetails.x),
+        lat: parseFloat(StationDetails.y)
       });
     })
     .catch(function (err) {
