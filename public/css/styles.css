@@ -7,24 +7,19 @@ body {
 
 h1{
   text-align: center;
+  font-weight: 600;
+  font-size: 3.5rem;
 }
-#logo{
-  width: 130px;
-  float: left;
-  margin: 5px 20px;
-  height: 65px;
-}
+
 ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
-
 }
 li{
   display: inline-block;
   margin-right: 40px;
   padding: 20px 0;
-
 }
 li:hover{
   cursor: pointer;
@@ -37,45 +32,12 @@ li a {
 nav{
   text-align: right;
   width: 100%;
-  
 }
-
-.hero {
-  min-height: 700px;
-  column-count: 2;
-  margin: 80px 15px 0;
-}
-.heroText h1 {
-  font-weight: 600;
-  font-size: 3.5rem;
-  
-}
-.heroText{
-  height: 500px;
-  width: 68%;
-  margin: 15px 0 10px 17%;
-  text-align: center;
-  line-height: 115%;
-  font-size: 1.3rem;
-  padding:  10px 20px;
-}
-.heroImg{
-  height: 500px;
-  width: 90%;
-  background-image: url(https://www.citybikefinland.fi/sites/citybike/files/images/slider_home/smoovehki-127.jpg);
-  background-position: center;
-  background-size: cover;
-  background-position-x: right;
-  transform: rotate(8deg);
-}
-
 th {
-  font-size: 15px;
-  padding: 5px 20px;
+  padding: 7px 20px;
   border: 1px solid #ddd;
   background-color: #F6F38A;
 }
-
 td{
   border: 1px solid #ddd;
   padding: 2px 10px;
@@ -83,16 +45,51 @@ td{
 tr:hover{
   background-color: #fffcada9;
 }
-
-
 table {
    border-collapse: collapse;
    margin: auto;
    margin-bottom: 50px;
 }
-
-a {
+table a {
   margin-bottom: 100px;
+}
+
+#logo{
+  width: 130px;
+  float: left;
+  margin: 5px 20px;
+  height: 65px;
+}
+
+.hero {
+  min-height: 100%;
+  column-count: 2;
+  margin: 80px 15px 0;
+
+}
+.hero h1 {
+  margin-top: 15%;
+}
+.hero p{
+  margin-top: 15%;
+}
+
+.heroText{
+  height: 600px;
+  width: 60%;
+  margin: 30px 0 10px 17%;
+  text-align: center;
+  line-height: 140%;
+  font-size: 1.3rem;
+  padding:  10px 20px;
+}
+.heroImg{
+  height: 600px;
+  width: 90%;
+  background-image: url(https://www.citybikefinland.fi/sites/citybike/files/images/slider_home/smoovehki-127.jpg);
+  background-size: cover;
+  background-position-x: right;
+  transform: rotate(8deg);
 }
 
 .tableNavigation{
@@ -124,7 +121,6 @@ a {
   padding: 12px 10px;
   z-index: 1;
 }
-
 
 .limitDropdown:hover .limitDropdownContent {
   display: block;
@@ -194,10 +190,10 @@ a {
 
 
 /* Stations */
+
 .stationSearch {
   text-align: center;
   margin-bottom: 20px;
-  
 }
 
 .stationName {
@@ -215,16 +211,14 @@ a {
 #googleMap {
   width: 400px;
   height: 400px;
-
 }
 
-
 footer{
-  
-  left: 0;
+  position: fixed;
+  padding-top: 5px;
   bottom: 0;
   width: 100%;
-  padding: 5px 0;
+  height: 2rem;
   background-color: #F6F38A;
   color: black;
   text-align: center;
