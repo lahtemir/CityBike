@@ -199,7 +199,14 @@ table a {
   margin: auto;
   text-align: left;
 }
+.noJourneysFound{
+  text-align: center;
+  color: #444;
+}
 
+.noJourneysFound a:visited {
+  color: #444;
+}
 
 /* Stations */
 
@@ -218,7 +225,14 @@ table a {
 
 .stationDetails{
   columns: 2;
-  margin: 50px;
+  margin: 7%;
+  column-gap: 8%;
+}
+.stationDetails h3{
+  margin: 0;
+}
+.stationDetails p{
+  margin: 8px;
 }
 #googleMap {
   width: 400px;

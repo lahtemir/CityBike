@@ -11,8 +11,7 @@
 
     <p> Total number of journeys ending at the station: <%= returns.length %></p>
 
-    <p id="lng"><%= lng %></p>
-    <p id="lat"><%= lat %></p>
+    
     
 
 
@@ -28,7 +27,7 @@
         <% for (let i = 0; i < departures.length; i++) { %>
             <% departureSum = departureSum + departures[i].Distance %>
         <% } %>
-        <p>The average distance of a journey starting from the station: <%= Math.round(departureSum / departures.length) %> m</p>
+        <p>The average distance of a journeys: <%= Math.round(departureSum / departures.length) %> m</p>
         
         <!-- Pushing all return stations to array -->
         <% let returnStations= [] %>
@@ -50,7 +49,7 @@
          <!-- Get top value from array -->
         <% let topReturnStation = Object.keys(countReturn).reduce((a, b) => countReturn[a] > countReturn[b] ? a : b); %>
         
-        <p>The most common return station for journeys starting from this station <%= topReturnStation %> </p>
+        <p>The most common return stations: <%= topReturnStation %> </p>
     <% } %>
 
 
@@ -68,7 +67,7 @@
             <% returnSum = returnSum + returns[i].Distance %>
         <% } %>
         
-        <p>The average distance of a journey ending at the station: <%= Math.round(returnSum / returns.length) %> m</p>
+        <p>The average distance of a journeys: <%= Math.round(returnSum / returns.length) %> m</p>
 
         <!-- Pushing all departurestations to array -->
         <% let departureStations= [] %>
@@ -92,10 +91,11 @@
         <% let topDepartureStation = Object.keys(countDeparture).reduce((a, b) => countDeparture[a] > countDeparture[b] ? a : b); %>
 
 
-        <p> The most common departure station for journeys ending at this station is: <%= topDepartureStation %> </p>
+        <p> The most common departure stations: <%= topDepartureStation %> </p>
         <% } %>
 
-        <div id="googleMap"></div>
+        <div id="googleMap"><p id="lng"><%= lng %></p>
+            <p id="lat"><%= lat %></p></div>
  
 </div>
 
@@ -123,5 +123,5 @@ new google.maps.Marker({
 }
 </script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=KEY&callback=myMap"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBtalyAVHd1A_B13gPCIu-Gj90OF_yfL5A&callback=myMap"></script>
 

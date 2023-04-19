@@ -115,7 +115,7 @@ app.post("/searchJourneys/:searchedStation", (req, res) => {
     res.render("searchJourney", {
       searchedJourney:requestedSearch,
       searchedData:searchedData
-   
+  
     });
   })
   .catch(function (err) {
@@ -186,11 +186,6 @@ app.post("/searchStation/:requestedStation", function(req, res) {
 })
 
 
-
-
-app.get("/map", (req, res) => {
-  res.render("map")
-})
 
 
 app.get("/users", paginatedResults(Alldatarow), (req, res ) => {
