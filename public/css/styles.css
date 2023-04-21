@@ -87,7 +87,7 @@ table a {
 .heroImg{
   height: 600px;
   width: 90%;
-  background-image: url(https://www.citybikefinland.fi/sites/citybike/files/images/slider_home/smoovehki-127.jpg);
+  background-image: url(../pictures/HelsinkiCityBike.jpg);
   background-size: cover;
   background-position-x: right;
   transform: rotate(8deg);
