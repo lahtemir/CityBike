@@ -3,6 +3,9 @@ const express = require("express");
 const mongoose =require("mongoose");
 const bodyParser = require("body-parser");
 
+const {journeySearch} = require("./functions/journeySearch");
+const {paginatedResults} = require("./functions/paginatedResults");
+
 const app = express();
 
 app.set("view engine", "ejs");
@@ -78,16 +81,16 @@ app.post("/searchJourneys/:searchedStation", (req, res) => {
   let requestedDurationMax;
 
   // Setting min distance to 0 if no input 
-  requestedDistanceMin = journeySearch(req.body.distanceMin, requestedDistanceMin, 0, 1000);
+  requestedDistanceMin = journeySearch(req.body.distanceMin, 0, 1000);
 
   // Setting max distance to infinity if no input 
-  requestedDistanceMax = journeySearch(req.body.distanceMax, requestedDistanceMax, Infinity, 1000)
+  requestedDistanceMax = journeySearch(req.body.distanceMax, Infinity, 1000)
 
   // Setting min duration to 0 if no input 
-  requestedDurationMin = journeySearch(req.body.durationMin, requestedDurationMin, 0, 60)
+  requestedDurationMin = journeySearch(req.body.durationMin, 0, 60)
 
   // Setting max duration to infinity if no input 
-  requestedDurationMax = journeySearch(req.body.durationMax, requestedDurationMax, Infinity, 60)
+  requestedDurationMax = journeySearch(req.body.durationMax, Infinity, 60)
 
  
 
@@ -174,65 +177,15 @@ app.post("/searchStation/:requestedStation", function(req, res) {
 
 
 
+
 app.get("/users", paginatedResults(Alldatarow), (req, res ) => {
 
   res.json(res.paginatedResults) 
 })
 
 
-function journeySearch(userInput, output, value, factor) {
-  if(!userInput) {
-    output = parseFloat(value)
-  } else {
-    output = parseFloat(userInput)*factor
-  }
-  return output;
-}
 
-function paginatedResults(model) {
-  return async (req, res, next) => {
-    const page = parseInt(req.query.page)
-    const limit = parseInt(req.query.limit)
-  
-    const startIndex = (page - 1) * limit
-    const endIndex = page * limit
-  
-    const results = {}
-  
-    if (endIndex < await model.countDocuments().exec()) {
-      results.next = {
-        page: page + 1,
-        limit: limit
-      }
-    }
-  
-  
-    if (startIndex > 0) {
-      results.previous = {
-        page: page - 1,
-        limit: limit
-      }
-    }
 
-    results.info = {
-      page: page,
-      limit: limit, 
-      startIndex: startIndex,
-      endIndex: endIndex
-    }
-  
-
-    try{
-      results.results = await model.find().limit(limit).skip(startIndex).exec()
-      res.paginatedResults = results
-      next()
-    }catch (e) {
-      res.status(500).json({message: e.message})
-    }
-    
-    
-  }
-}
 
 
 
