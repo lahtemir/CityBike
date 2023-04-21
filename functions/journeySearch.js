@@ -1,7 +1,7 @@
 function journeySearch(userInput, value, factor) {
   let output;
   if(isNaN(userInput)) {
-   return ;
+   throw new Error('Invalid input')
   } else if (!userInput) {
     output = parseFloat(value)
   } else {

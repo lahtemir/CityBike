@@ -6,7 +6,7 @@ it('should transform numbers to a float type of number', () => {
 
     const result = journeySearch(userInput, 0, 1);
 
-    expect(result).toBeTypeOf("number")
+    expect(result).toBe(+userInput)
 }); 
 
 
