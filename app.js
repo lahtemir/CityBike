@@ -186,10 +186,7 @@ function journeySearch(userInput, output, value, factor) {
   } else {
     output = parseFloat(userInput)*factor
   }
-
-
-  return output
-
+  return output;
 }
 
 function paginatedResults(model) {

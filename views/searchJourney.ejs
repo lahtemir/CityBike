@@ -2,12 +2,14 @@
 
 <h1>Journeys including <%= searchedJourney %></h1>
 
+<!-- Screen for 'no data found' -->
 <% if (!searchedData[0]) { %>
   <div class="noJourneysFound">
     <h2>No Data found with given search criteria</h2>
     <a href="/journeys?page=1&limit=25">Back to Journeys</a>
   </div>
   
+  <!-- Table for found Journey data -->
 <% } else { %>
   <table>
     <tr>
@@ -17,6 +19,7 @@
       <th>Duration</th>
     </tr>
   <tr>
+    <!-- Looping through found data for first 500 rows -->
   <% for (let i = 0; i < 500; i++) { %>
     <% if (searchedData[i]) { %>
    

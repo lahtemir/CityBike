@@ -4,7 +4,7 @@
 <h1>Stations</h1>
 
 
-
+<!-- Search station form  -->
 <div class="stationSearch">
   <button type="button" class="search">Search Stations</button>
     <div class="content">
@@ -19,7 +19,7 @@
 </div>
 
 
-
+<!-- Table for Stations -->
 <table id="stationsTable">
   <tr>
     <th>Station Name</th>
@@ -27,7 +27,7 @@
     <th>City</th>
   </tr>
 
-
+  <!-- Looping through all data and creating table  -->
   <% for (let i = 0; i < allStations.info.limit; i++) { %>
     <% if (allStations.results[i]) { %>
       <tr>
@@ -43,6 +43,7 @@
 
 </table>
 
+<!-- Table row limits -dropdown -->
 <div class="tableNavigation">
   <div class="limitDropdown">
     <span><%= allStations.info.limit %> ▼</span>
@@ -56,12 +57,10 @@
 
 <br>
 
+  <!-- Table navigation -->
 <% if ("previous" in allStations) { %>
   <a href="/stations/?page=<%= allStations.info.page -1 %>&limit=<%= allStations.info.limit %>"> ◄ </a>
     <% } %>
-
-
-
 
 <% if ("next" in allStations) { %>
   <a href="/stations/?page=<%= allStations.info.page +1 %>&limit=<%= allStations.info.limit %>"> ► </a>
@@ -76,7 +75,7 @@
 <%- include("footer") -%>
 
 <script>
-
+// Function for search station display
   var coll = document.getElementsByClassName("search");
   var i;
   

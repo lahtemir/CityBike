@@ -2,6 +2,7 @@
 
 <h1><%=journeysText %></h1>
 
+<!-- Search journey form  -->
 <div class="journeySearch">
   <button type="button" class="search">Search Journeys</button>
   <div class="content">
@@ -30,6 +31,7 @@
   </div>
 </div>
 
+<!-- Table for Journeys -->
 <table>
   <tr>
     <th>Departure station name</th>
@@ -38,6 +40,7 @@
     <th>Duration</th>
   </tr>
 
+  <!-- Looping through all data and creating table  -->
   <% for (let i = 0; i < allData.info.limit; i++) { %>
     <% if (allData.results[i]) { %>
       <tr>
@@ -51,8 +54,9 @@
     <% } %>
   <% } %>
 
-  
 </table>
+
+<!-- Table row limits -dropdown -->
 <div class="tableNavigation">
   <div class="limitDropdown">
     <span><%= allData.info.limit %> ▼</span>
@@ -65,10 +69,10 @@
   </div>
   <br>
 
+  <!-- Table navigation -->
 <% if ("previous" in allData) { %>
   <a href="/journeys/?page=<%= allData.info.page -1 %>&limit=<%= allData.info.limit %>"> ◄ </a>
     <% } %>
-
 
 <% if ("next" in allData) { %>
   <a href="/journeys/?page=<%= allData.info.page +1 %>&limit=<%= allData.info.limit %>"> ► </a>
@@ -83,6 +87,7 @@
 
 <script>
 
+// Function for search journey display
 var coll = document.getElementsByClassName("search");
 var i;
 

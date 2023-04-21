@@ -69,7 +69,7 @@
         
         <p>The average distance of a journeys: <%= Math.round(returnSum / returns.length) %> m</p>
 
-        <!-- Pushing all departurestations to array -->
+        <!-- Pushing all departure stations to array -->
         <% let departureStations= [] %>
         <% for (let i = 0; i < returns.length; i++) { %>
             <% departureStations.push(returns[i].DepartureStationName +" ") %>
@@ -109,6 +109,7 @@
 
 
 <script type="text/javascript">
+    // Google maps function
 function myMap() {
 
 var mapProp= {
@@ -124,4 +125,3 @@ new google.maps.Marker({
 </script>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=KEY&callback=myMap"></script>
-
