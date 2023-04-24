@@ -228,6 +228,9 @@ table a {
   margin: 7%;
   column-gap: 8%;
 }
+.stationDetails h2{
+  margin-bottom: 1px;
+}
 .stationDetails h3{
   margin: 0;
 }
@@ -238,6 +241,21 @@ table a {
   width: 400px;
   height: 400px;
 }
+#lat {
+  margin-left: 3px;
+}
+#lng {
+  margin-left: 3px;
+}
+.coordinates {
+  display: flex;
+}
+.coordinates p {
+  margin: 0;
+  margin-bottom: 5px;
+  font-size: smaller;
+}
+
 
 footer{
   position: fixed;

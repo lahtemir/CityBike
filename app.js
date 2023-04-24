@@ -2,6 +2,7 @@
 const express = require("express");
 const mongoose =require("mongoose");
 const bodyParser = require("body-parser");
+const alert = require('alert'); 
 
 const {journeySearch} = require("./functions/journeySearch");
 const {paginatedResults} = require("./functions/paginatedResults");
@@ -69,7 +70,7 @@ Alldatarow.find().limit(100)
   });
 })
 .catch(function (err) {
-console.log(err);
+  console.log(err);
 });
 });
 
@@ -92,7 +93,6 @@ app.post("/searchJourneys/:searchedStation", (req, res) => {
   // Setting max duration to infinity if no input 
   requestedDurationMax = journeySearch(req.body.durationMax, Infinity, 60)
 
- 
 
 // Finding journey data from db
   Alldatarow.find({$and: [
@@ -108,7 +108,7 @@ app.post("/searchJourneys/:searchedStation", (req, res) => {
     });
   })
   .catch(function (err) {
-    res.redirect("/journeys")
+    window.alert("Error");
     console.log(err);
     });
 });
