@@ -44,8 +44,8 @@ const stationsDataSchema = {
   StationName: String,
   StationAddress: String,
   City: String,
-  x: String,
-  y: String,
+  x: Number,
+  y: Number,
   Departure: Array,
   Return: Array
 };
@@ -144,8 +144,8 @@ StationDetails.findOne({StationName:requestedStation})
     stationAddress:StationDetails.StationAddress,
     departures:StationDetails.Departure,
     returns: StationDetails.Return,
-    lng: parseFloat(StationDetails.x),
-    lat: parseFloat(StationDetails.y)
+    lng: StationDetails.x,
+    lat: StationDetails.y
   });
 });
 
@@ -163,8 +163,8 @@ app.post("/searchStation/:requestedStation", function(req, res) {
         stationAddress:StationDetails.StationAddress,
         departures:StationDetails.Departure,
         returns: StationDetails.Return,
-        lng: parseFloat(StationDetails.x),
-        lat: parseFloat(StationDetails.y)
+        lng: StationDetails.x,
+        lat: StationDetails.y
       });
     })
     .catch(function (err) {
@@ -182,12 +182,6 @@ app.get("/users", paginatedResults(Alldatarow), (req, res ) => {
 
   res.json(res.paginatedResults) 
 })
-
-
-
-
-
-
 
 
 
