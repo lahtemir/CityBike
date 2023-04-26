@@ -18,8 +18,28 @@
 
     <p> Total number of journeys ending at the station: <%= returns.length %></p>
 
+
+    <!-- ************************************** -->
+    <!-- ************ Functions *************** -->
+    <!-- ************************************** -->
     
+    <!-- Calculation top departure/return stations -->
+    <% countTopStation = function(stations){ %>
+        <% const countStations = {}; %>
     
+        <% stations.forEach(element => { %>
+            <% if (countStations[element]) { %>
+                <% countStations[element] += 1; %>
+            <% } else { %>
+                <% countStations[element] = 1; %>
+            <% } %>
+        <% }); %>
+
+        <% let topStation = Object.keys(countStations).reduce((a, b) => countStations[a] > countStations[b] ? a : b); %>
+        <% return topStation; %>
+    <% } %>
+
+
 
 
     <!-- ************************************** -->
@@ -42,20 +62,9 @@
             <% returnStations.push(departures[i].ReturnStationName +" ") %>
         <% } %>
 
-        <!-- Counting the most frequent station from array -->
-        <% const countReturn = {}; %>
-
-        <% returnStations.forEach(element => { %>
-        <% if (countReturn[element]) { %>
-            <%    countReturn[element] += 1; %>
-        <% } else { %>
-            <%    countReturn[element] = 1; %>
-        <% } %>
-        <% }); %>
-
-         <!-- Get top value from array -->
-        <% let topReturnStation = Object.keys(countReturn).reduce((a, b) => countReturn[a] > countReturn[b] ? a : b); %>
         
+        <!-- Calling countTopStation to get top return station -->
+        <% let topReturnStation = countTopStation(returnStations)%>
         <p>The most common return stations: <%= topReturnStation %> </p>
     <% } %>
 
@@ -82,35 +91,17 @@
             <% departureStations.push(returns[i].DepartureStationName +" ") %>
         <% } %>
 
-
-        <!-- Counting the most frequent station from array -->
-        <% const countDeparture = {}; %>
-
-        <% departureStations.forEach(element => { %>
-        <% if (countDeparture[element]) { %>
-            <%    countDeparture[element] += 1; %>
-        <% } else { %>
-            <%    countDeparture[element] = 1; %>
-        <% } %>
-        <% }); %>
-
-         <!-- Get top value from array -->
-        <% let topDepartureStation = Object.keys(countDeparture).reduce((a, b) => countDeparture[a] > countDeparture[b] ? a : b); %>
-
+        <!-- Calling countTopStation to get top departure station -->
+        <% let topDepartureStation = countTopStation(departureStations)%>
 
         <p> The most common departure stations: <%= topDepartureStation %> </p>
         <% } %>
 
 
 
-        <div id="googleMap">
-            </div>
+        <div id="googleMap"></div>
  
 </div>
-
-
-
-
 
 
 <%- include("footer") -%>
