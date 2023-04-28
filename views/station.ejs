@@ -40,6 +40,18 @@
     <% } %>
 
 
+    <!-- Calculationg the average distance  -->
+    <% countAverageDistance = function(journeyInfo) { %>
+        <% let sum = 0 %>
+        <% for (let i = 0; i < journeyInfo.length; i++) { %>
+            <% sum = sum + journeyInfo[i].Distance %>
+        <% } %>
+
+        <% let averageDistance = Math.round(sum / journeyInfo.length) %>
+        <% return averageDistance %>
+    <% } %>
+
+
 
     <!-- ************************************** -->
     <!-- **** Station as Departure station **** -->
@@ -48,12 +60,8 @@
     <% if (departures.length > 0) { %>
         <br>
         <h3> <%= stationName %> as Departure Station</h3>
-        <!-- Calculationg the average distance  -->
-        <% let departureSum = 0 %>
-        <% for (let i = 0; i < departures.length; i++) { %>
-            <% departureSum = departureSum + departures[i].Distance %>
-        <% } %>
-        <p>The average distance of a journeys: <%= Math.round(departureSum / departures.length) %> m</p>
+        <!-- The average distance starting from station  -->
+        <p>The average distance of a journeys: <%= countAverageDistance(departures) %> m</p>
         
         <!-- Pushing all return stations to array -->
         <% let returnStations= [] %>
@@ -61,10 +69,8 @@
             <% returnStations.push(departures[i].ReturnStationName +" ") %>
         <% } %>
 
-        
         <!-- Calling countTopStation to get top return station -->
-        <% let topReturnStation = countTopStation(returnStations)%>
-        <p>The most common return stations: <%= topReturnStation %> </p>
+        <p>The most common return stations: <%= countTopStation(returnStations) %> </p>
     <% } %>
 
 
@@ -72,17 +78,11 @@
     <!-- **** Station as Return station **** -->    
     <!-- *********************************** -->
 
-
     <% if (returns.length > 0) { %>
         <br>
         <h3> <%= stationName %> as Return Station</h3>
-         <!-- Calculationg the average distance  -->
-        <% let returnSum = 0 %>
-        <% for (let i = 0; i < returns.length; i++) { %>
-            <% returnSum = returnSum + returns[i].Distance %>
-        <% } %>
-        
-        <p>The average distance of a journeys: <%= Math.round(returnSum / returns.length) %> m</p>
+         <!-- The average distance ending to station  -->
+        <p>The average distance of a journeys: <%= countAverageDistance(returns) %> m</p>
 
         <!-- Pushing all departure stations to array -->
         <% let departureStations= [] %>
@@ -91,9 +91,7 @@
         <% } %>
 
         <!-- Calling countTopStation to get top departure station -->
-        <% let topDepartureStation = countTopStation(departureStations)%>
-
-        <p> The most common departure stations: <%= topDepartureStation %> </p>
+        <p> The most common departure stations: <%= countTopStation(departureStations) %> </p>
         <% } %>
 
 
