@@ -10,3 +10,11 @@ STATIONS
 On the Stations tab, the table lists the names, addresses and cities of stations. User can limit rows on the table from dropdown. User can also navigate between pages by using the arrow navigation. 
 
 By pressing the 'search' button, the user can search specific stations or user can click wanted station name on table rows. From both, user gets navigated to station's page, where is information like address, location on the map, number of journeys starting and ending to stations, average distances and most common return or departure stations. 
+
+DATABASE 
+This app uses MongoDB database. 
+Journeys that were less than 10 meters or lasted less than 10 seconds have been removed from the database, using commands: 
+helsinkiCityBikesDB> db.trips.deleteMany({Distance: {$lte:10}})
+helsinkiCityBikesDB> db.trips.deleteMany({Duration: {$lt:10}})
+
+For station's detaled pages, journey's tables and station's pages are joined using MongoDB $lookup. 
