@@ -71,6 +71,7 @@ table a {
 }
 .hero h1 {
   margin-top: 15%;
+  line-height: 3rem;
 }
 .hero p{
   margin-top: 15%;
@@ -92,6 +93,7 @@ table a {
   background-size: cover;
   background-position-x: right;
   transform: rotate(8deg);
+  
 }
 
 .searchBtn{
@@ -271,3 +273,25 @@ footer{
 }
 
 
+@media screen and (max-width: 1100px) {
+  .hero {
+    column-count: 1;
+  }
+  .heroImg {
+    margin-left: 5%;
+  }
+}
+
+
+@media screen and (max-width: 650px) {
+
+  h1{
+    font-size: 2rem;
+  }
+  .search{
+    width: 80%;
+  }
+  table {
+    font-size: smaller;
+  }
+}
