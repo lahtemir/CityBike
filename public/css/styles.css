@@ -45,6 +45,7 @@ td{
 }
 tr:hover{
   background-color: #fffcada9;
+  font-weight: bolder;
 }
 table {
    border-collapse: collapse;
