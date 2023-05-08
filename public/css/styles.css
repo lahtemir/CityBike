@@ -103,6 +103,7 @@ table a {
 .searchBtn:hover{
   cursor: pointer;
   background-color: #fffcada9;
+  font-weight: bolder;
 }
 
 .tableNavigation{
